@@ -34,6 +34,11 @@ final class Framework {
 
         // url调度
         Dispatch::dispatchUrl();
+
+        // Composer
+        if (COMPOSER_PATH) {
+            require COMPOSER_PATH.'/autoload.php';
+        }
     }
 
     /**
