@@ -1,12 +1,12 @@
-@title 自定义框架
-@version 0.0.1
-@auth 邱汶粤(irving)
+@title 自定义框架  
+@version 0.0.1  
+@auth 邱汶粤(irving)  
 
-v0.0.1 版本更新说明：
-1、实现了类的自动加载功能，请注意命名格式，控制器文件和类后面必须加入Controller，并且全局命名遵从PSR规范
-2、实现了路由定义功能，目前仅支持GET、POST、PUT、DELETE
-3、实现了返回格式限制功能，在文件config/common/ResponseFormat.php中可以设置格式，目前仅支持JSON
-4、实现了composer的融入
+v0.0.1 版本更新说明：  
+1、实现了类的自动加载功能，请注意命名格式，控制器文件和类后面必须加入Controller，并且全局命名遵从PSR规范  
+2、实现了路由定义功能，目前仅支持GET、POST、PUT、DELETE  
+3、实现了返回格式限制功能，在文件config/common/ResponseFormat.php中可以设置格式，目前仅支持JSON  
+4、实现了composer的融入  
 
 v0.0.2 版本更新说明
 1、自定义了错误处理方法，位于framework/ExceptionHandle.php
