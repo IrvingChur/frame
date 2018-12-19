@@ -12,6 +12,7 @@ v0.0.2 版本更新说明
 1、自定义了错误处理方法，位于framework/ExceptionHandle.php  
 2、新增command入口，具体操作为[php command.php --class'操作类' --function='操作方法' --params'参数'(string)]  
 3、增加了日志系统，依赖swoole，请先安装swoole插件并运行[php command.php --class='Framework\Swoole\LogSystem' --function='run']开启服务  
+
 注意事项：  
 1、该框架是一个API框架，没有视图功能  
 2、在控制器中使用return即可返回信息，但需要限定格式，格式为return ['code' => , 'data' => , 'message' =>]  
