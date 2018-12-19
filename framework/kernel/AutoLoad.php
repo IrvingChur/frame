@@ -40,11 +40,11 @@ class AutoLoad
 
         $newClass = implode('/', $newClass);
 
-        // 空判断操作
-        if (include ROOT_PATH.'/'.$newClass.'.php') {
-
-        } elseif (include ROOT_PATH.'/'.$newClass.'Controller.php') {
-
+        // 加载文件
+        if (file_exists(ROOT_PATH.'/'.$newClass.'.php')) {
+            include ROOT_PATH.'/'.$newClass.'.php';
+        } elseif (file_exists(ROOT_PATH.'/'.$newClass.'Controller.php')) {
+            include ROOT_PATH.'/'.$newClass.'Controller.php';
         }
     }
 }

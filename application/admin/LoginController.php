@@ -2,6 +2,8 @@
 
 namespace Application\admin;
 
+use Framework\Kernel\LogSystem;
+
 class LoginController
 {
     /**
@@ -10,6 +12,10 @@ class LoginController
      */
     public function index()
     {
+        $res = LogSystem::writeLog('12313133');
+        var_dump($res);
+        exit;
+
         return [
             'code' => 200,
             'data' => null,

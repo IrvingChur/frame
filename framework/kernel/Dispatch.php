@@ -18,7 +18,7 @@ class Dispatch
      */
     public static function dispatchUrl()
     {
-        self::$pathInfo = $_SERVER['PATH_INFO'];
+        self::$pathInfo = @$_SERVER['PATH_INFO'];
         self::$requestMethod = $_SERVER['REQUEST_METHOD'];
         self::$url  = self::searchRoute();
     }
@@ -30,7 +30,7 @@ class Dispatch
     private static function searchRoute()
     {
         $routes = RouteBinding::init()->getRoutes(strtolower(self::$requestMethod));
-        $route = $routes[self::$pathInfo];
+        $route = @$routes[self::$pathInfo];
         if (empty($route)) {
             throw new \Exception("路由不存在");
         }

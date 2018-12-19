@@ -8,6 +8,8 @@ namespace Framework;
 
 use Framework\Kernel\AutoLoad;
 use Framework\Kernel\Dispatch;
+use Framework\Kernel\Exception;
+use Framework\Kernel\LogSystem;
 use Framework\Kernel\ResponseFormat;
 use Route\RouteGather;
 
@@ -16,7 +18,6 @@ final class Framework {
     public function __construct()
     {
         $this->loadKernel();
-        $this->setReporting();
     }
 
     /**
@@ -29,6 +30,12 @@ final class Framework {
         require ROOT_PATH.'/framework/kernel/AutoLoad.php';
         AutoLoad::init();
 
+        // 异常处理
+        Exception::init();
+
+        // 日志系统
+        LogSystem::init();
+
         // 路由加载
         RouteGather::loadGather();
 
@@ -38,21 +45,6 @@ final class Framework {
         // Composer
         if (COMPOSER_PATH) {
             require COMPOSER_PATH.'/autoload.php';
-        }
-    }
-
-    /**
-     * @title 错误报告
-     * @return void
-     */
-    public function setReporting()
-    {
-        if (DEBUG_MODE === true) {
-            error_reporting(E_ALL);
-            ini_set('display_errors', 'On');
-        } else {
-            error_reporting(E_ALL);
-            ini_set('display_errors', 'Off');
         }
     }
 
