@@ -37,6 +37,12 @@ class ResponseFormat
         return $data;
     }
 
+    public static function output($data)
+    {
+        $message = self::responseFormat($data);
+        echo $message;
+    }
+
     private static function getFormat()
     {
         return require ROOT_PATH.'/config/common/ResponseFormat.php';

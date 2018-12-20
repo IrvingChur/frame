@@ -2,6 +2,7 @@
 
 namespace Application\admin;
 
+use Extend\IocDemoExtend;
 use Framework\Kernel\LogSystem;
 
 class LoginController
@@ -10,7 +11,7 @@ class LoginController
      * @title 后台主页[测试用例]
      * @method /admin
      */
-    public function index()
+    public function index(IocDemoExtend $ioc)
     {
         $res = LogSystem::writeLog('12313133');
         var_dump($res);

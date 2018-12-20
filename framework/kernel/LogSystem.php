@@ -38,6 +38,10 @@ class LogSystem
     public static function getTrace()
     {
        $trace = debug_backtrace();
+
+       var_dump($trace);
+       exit;
+
        $upTrace = $trace[1];
 
        return $upTrace;
@@ -54,7 +58,7 @@ class LogSystem
         $trace = self::getTrace();
         $trace['log'] = $string;
         $result = self::$client->send(serialize($trace));
-
+        self::$client->close();
         return $result ? true : false ;
     }
 }
