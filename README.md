@@ -12,6 +12,9 @@ v0.0.2 版本更新说明
 1、自定义了错误处理方法，位于framework/ExceptionHandle.php  
 2、新增command入口，具体操作为[php command.php --class'操作类' --function='操作方法' --params'参数'(string)]  
 3、增加了日志系统，依赖swoole，请先安装swoole插件并运行[php command.php --class='Framework\Swoole\LogSystem' --function='run']开启服务  
+v0.1.0 版本更新说明
+1、实现了依赖注入的支持（在Controller中填入需要注入的类，现仅支持依赖的类没有第三依赖）
+2、修正了使用日志方法后，连接不关闭
 
 注意事项：  
 1、该框架是一个API框架，没有视图功能  
