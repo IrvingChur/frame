@@ -15,9 +15,9 @@ v0.0.2 版本更新说明
 
 v0.0.3 版本更新说明  
 1、实现了依赖注入的支持（在Controller中填入需要注入的类，现仅支持依赖的类没有第三依赖）  
-2、修正了使用日志方法后，连接不关闭
-3、引入Laravel的Eloquent配置文件在config/database/config.php
-4、修复日志中寻找应用目录方式
+2、修正了使用日志方法后，连接不关闭  
+3、引入Laravel的Eloquent配置文件在config/database/config.php  
+4、修复日志中寻找应用目录方式  
 
 v0.0.4 版本更新说明  
 1、实现了缓存，设计模式基于工厂模式，使用抽象类定义，目前只支持Redis，配置文件位于config/common/CacheConfig.php  
