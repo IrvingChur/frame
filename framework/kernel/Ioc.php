@@ -8,6 +8,8 @@ namespace Framework\Kernel;
  */
 class Ioc {
 
+    protected static $object = [];
+
     /**
      * @title 获取类对象实例
      * @param $className \stdClass 类
@@ -34,7 +36,12 @@ class Ioc {
         $objectArray = [];
         foreach ($param as $key => $value) {
             foreach ($value as $valueOneMore) {
-                $objectArray[$key][] = new $valueOneMore->name();
+                if (isset(self::$object)) {
+                    $object = self::$object[$valueOneMore->name];
+                } else {
+                    $object = new $valueOneMore->name();
+                }
+                $objectArray[$key][] = $object;
             }
         }
 
