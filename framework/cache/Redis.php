@@ -1,17 +1,14 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: IrvingChur
- * Date: 2018/12/21
- * Time: 下午11:31
+ * auth irving
+ * describe Redis类
  */
-
 namespace Framework\Cache;
 
 
 use Framework\Instrument\GetConfig;
 
-class Redis extends CacheInterface
+class Redis extends CacheAbstract
 {
     protected static $object;
     protected $originalObject;
@@ -63,16 +60,17 @@ class Redis extends CacheInterface
 
     public function set(string $key, $value)
     {
-
+        return $this->originalObject->set($key, $value);
     }
 
     public function get(string $key)
     {
-
+        return $this->originalObject->get($key);
     }
 
     public function setArray(string $key, $value)
     {
-
+        $value = $this->conversion($value);
+        return $this->set($key, $value);
     }
 }

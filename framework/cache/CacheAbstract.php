@@ -1,13 +1,13 @@
 <?php
 /**
  * auth irving
- * describe Cache接口类
+ * describe Cache抽象类
  */
 
 namespace Framework\Cache;
 
 
-abstract class CacheInterface
+abstract class CacheAbstract
 {
     // 定义获取方法
     abstract public function get(string $key);
