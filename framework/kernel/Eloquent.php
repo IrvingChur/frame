@@ -5,6 +5,7 @@
  */
 namespace Framework\Kernel;
 
+use Framework\Instrument\GetConfig;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 class Eloquent
@@ -17,7 +18,7 @@ class Eloquent
     {
         $capsule = new Capsule;
 
-        $capsule->addConnection(require ROOT_PATH.'/config/databases/default.php');
+        $capsule->addConnection(GetConfig::GetIncludeConfig(ROOT_PATH.'/config/databases/default.php'));
 
         $capsule->bootEloquent();
     }

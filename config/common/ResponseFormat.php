@@ -5,4 +5,9 @@
  * describe 在此填写api返回的格式
  */
 
-return 'json';
+// 目前支持格式
+$format = [
+    'json',
+];
+
+return $format[0];

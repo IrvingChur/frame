@@ -4,6 +4,7 @@ namespace Application\admin\Controller;
 
 use Application\Models\Admin\VillaAdminUserMenusModel;
 use Extend\IocDemoExtend;
+use Framework\Cache\Cache;
 use Framework\Kernel\LogSystem;
 
 class LoginController
@@ -14,10 +15,9 @@ class LoginController
      */
     public function index(IocDemoExtend $ioc)
     {
-        $model = new VillaAdminUserMenusModel();
-        $res = $model::find(2);
-        $res = $res->toArray();
-        var_dump($res);
+        // 测试初始化cache
+        $cacheObject = Cache::init()->getOriginalObject();
+        var_dump($cacheObject);
         exit;
 
         return [

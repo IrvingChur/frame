@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * auth irving
+ * describe 数据库配置
+ */
+
 $config = [
     'mysql' => [
         'read' => [
