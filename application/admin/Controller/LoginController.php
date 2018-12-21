@@ -1,7 +1,8 @@
 <?php
 
-namespace Application\admin;
+namespace Application\admin\Controller;
 
+use Application\Models\Admin\VillaAdminUserMenusModel;
 use Extend\IocDemoExtend;
 use Framework\Kernel\LogSystem;
 
@@ -13,7 +14,11 @@ class LoginController
      */
     public function index(IocDemoExtend $ioc)
     {
-        $res = LogSystem::writeLog('测试');
+        $model = new VillaAdminUserMenusModel();
+        $res = $model::find(2);
+        $res = $res->toArray();
+        var_dump($res);
+        exit;
 
         return [
             'code' => 200,

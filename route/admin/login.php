@@ -6,7 +6,7 @@
 
 namespace Route\Admin;
 
-use Application\admin\LoginController;
+use Application\admin\Controller\LoginController;
 use Framework\Kernel\RouteBinding;
 
 class login

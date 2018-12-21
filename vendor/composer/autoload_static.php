@@ -6,9 +6,68 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit17b872f5e8bb1d06a6bb9ecf0b39526f
 {
+    public static $files = array (
+        '3b5531f8bb4716e1b6014ad7e734f545' => __DIR__ . '/..' . '/illuminate/support/Illuminate/Support/helpers.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+    );
+
+    public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Contracts\\' => 18,
+            'Symfony\\Component\\Translation\\' => 30,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Contracts\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/contracts',
+        ),
+        'Symfony\\Component\\Translation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/translation',
+        ),
+    );
+
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/..' . '/nesbot/carbon/src',
+    );
+
+    public static $prefixesPsr0 = array (
+        'I' => 
+        array (
+            'Illuminate\\Support' => 
+            array (
+                0 => __DIR__ . '/..' . '/illuminate/support',
+            ),
+            'Illuminate\\Events' => 
+            array (
+                0 => __DIR__ . '/..' . '/illuminate/events',
+            ),
+            'Illuminate\\Database' => 
+            array (
+                0 => __DIR__ . '/..' . '/illuminate/database',
+            ),
+            'Illuminate\\Container' => 
+            array (
+                0 => __DIR__ . '/..' . '/illuminate/container',
+            ),
+        ),
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit17b872f5e8bb1d06a6bb9ecf0b39526f::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit17b872f5e8bb1d06a6bb9ecf0b39526f::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInit17b872f5e8bb1d06a6bb9ecf0b39526f::$fallbackDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit17b872f5e8bb1d06a6bb9ecf0b39526f::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

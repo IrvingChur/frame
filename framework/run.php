@@ -8,6 +8,7 @@ namespace Framework;
 
 use Framework\Kernel\AutoLoad;
 use Framework\Kernel\Dispatch;
+use Framework\Kernel\Eloquent;
 use Framework\Kernel\Exception;
 use Framework\Kernel\Ioc;
 use Framework\Kernel\LogSystem;
@@ -31,8 +32,16 @@ final class Framework {
         require ROOT_PATH.'/framework/kernel/AutoLoad.php';
         AutoLoad::init();
 
+        // Composer
+        if (COMPOSER_PATH) {
+            require COMPOSER_PATH.'/autoload.php';
+        }
+
         // 异常处理
-//        Exception::init();
+        Exception::init();
+
+        // Eloquent初始化
+        Eloquent::init();
 
         // 日志系统
         LogSystem::init();
@@ -42,11 +51,6 @@ final class Framework {
 
         // url调度
         Dispatch::dispatchUrl();
-
-        // Composer
-        if (COMPOSER_PATH) {
-            require COMPOSER_PATH.'/autoload.php';
-        }
     }
 
     /**
