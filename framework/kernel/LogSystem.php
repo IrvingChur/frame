@@ -52,7 +52,12 @@ class LogSystem
             }
         }
 
-        self::$path = $classExplode[$index];
+        $path = $classExplode[$index];
+        if (!isset($classExplode[$index]) || $index === 0) {
+            $path = 'unknown';
+        }
+
+        self::$path = $path;
     }
 
     /**
