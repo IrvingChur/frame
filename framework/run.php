@@ -32,7 +32,7 @@ final class Framework {
         AutoLoad::init();
 
         // 异常处理
-        Exception::init();
+//        Exception::init();
 
         // 日志系统
         LogSystem::init();

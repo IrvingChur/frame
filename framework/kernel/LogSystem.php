@@ -9,6 +9,7 @@ namespace Framework\Kernel;
 class LogSystem
 {
     protected static $client;
+    public static $path;
 
     /**
      * @title 初始化日志系统
@@ -32,19 +33,26 @@ class LogSystem
     }
 
     /**
-     * @title 获取应用详情
+     * @title 设置目录
+     * @param $class string 访问类名
      * @return array 应用详情
      */
-    public static function getTrace()
+    public static function setPath(string $class)
     {
-       $trace = debug_backtrace();
+        if (empty($class)) {
+            throw new \Exception("日志目录不可为空");
+        }
 
-       var_dump($trace);
-       exit;
+        $classExplode = explode('\\', $class);
+        $index = 0;
+        foreach ($classExplode as $key => $value) {
+            if ($value == 'Application') {
+                $index = $key + 1;
+                break;
+            }
+        }
 
-       $upTrace = $trace[1];
-
-       return $upTrace;
+        self::$path = $classExplode[$index];
     }
 
     /**
@@ -55,7 +63,8 @@ class LogSystem
     public static function writeLog($string)
     {
         self::connect();
-        $trace = self::getTrace();
+        $trace = [];
+        $trace['path'] = self::$path;
         $trace['log'] = $string;
         $result = self::$client->send(serialize($trace));
         self::$client->close();

@@ -21,6 +21,9 @@ class Dispatch
         self::$pathInfo = @$_SERVER['PATH_INFO'];
         self::$requestMethod = $_SERVER['REQUEST_METHOD'];
         self::$url  = self::searchRoute();
+
+        // 调度中设置日志系统目录
+        LogSystem::setPath(self::$url['class']);
     }
 
     /**

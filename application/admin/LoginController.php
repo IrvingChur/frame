@@ -13,9 +13,7 @@ class LoginController
      */
     public function index(IocDemoExtend $ioc)
     {
-        $res = LogSystem::writeLog('12313133');
-        var_dump($res);
-        exit;
+        $res = LogSystem::writeLog('测试');
 
         return [
             'code' => 200,

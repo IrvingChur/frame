@@ -38,8 +38,7 @@ class LogSystem
      */
     public function onReceive($server, $fd, $from_id, $data){
         $data = unserialize($data);
-        $path = explode('/', $data['file']);
-        $path = $path[count($path) - 2];
+        $path = $data['path'];
         $this->mkdir(RUNTIME_PATH.'/'.$path);
         $data['dirPath'] = $path;
 
