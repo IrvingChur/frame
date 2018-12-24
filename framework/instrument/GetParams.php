@@ -29,7 +29,9 @@ class GetParams
      */
     public function getParam(string $method, string $index = '')
     {
-        if (!in_array($method, RouteBinding::ROUTE_METHOD)) {
+        $method = strtoupper($method);
+
+        if (!in_array(strtolower($method), RouteBinding::ROUTE_METHOD)) {
             throw new \Exception("暂不支持该方法参数");
         }
 
@@ -39,5 +41,20 @@ class GetParams
         }
 
         return $data;
+    }
+
+    /**
+     * @title 魔术方法,获取对应方法参数
+     * @param string $method
+     */
+    public function __get(string $method)
+    {
+        $method = strtoupper($method);
+
+        if (isset($this->data[$method])) {
+            return $this->data[$method];
+        }
+
+        return $this;
     }
 }

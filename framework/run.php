@@ -62,6 +62,7 @@ final class Framework {
         // 获取要调用的对象
         $controller = Dispatch::$url['class'];
         $function = Dispatch::$url['function'];
+
         // 获取依赖注入实例
         $object = Ioc::getInstance($controller);
         // 执行

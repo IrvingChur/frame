@@ -3,7 +3,6 @@
 namespace Application\admin\Controller;
 
 use Application\Models\Admin\VillaAdminUserMenusModel;
-use Extend\IocDemoExtend;
 use Framework\Cache\Cache;
 use Framework\Instrument\GetParams;
 use Framework\Kernel\Ioc;
@@ -11,33 +10,36 @@ use Framework\Kernel\LogSystem;
 
 class LoginController
 {
-    protected $params;
+    protected $paramObject;
 
-    /**
-     * @title 测试依赖注入
-     * LoginController constructor.
-     * @param IocDemoExtend $ioc
-     */
-    public function __construct(IocDemoExtend $ioc, GetParams $paramsObject)
+    public function __construct(GetParams $getParams)
     {
-        $this->params = $paramsObject;
-        var_dump($this->params);
+        $this->paramObject = $getParams;
     }
 
     /**
-     * @title 后台主页[测试用例]
-     * @method /admin
+     * @title 测试用例
+     * @uri /admin
+     * @method put
      */
     public function index()
     {
-        $result = Ioc::make(IocDemoExtend::class);
-        var_dump($result);
-        exit;
+        // 测试依赖注入 + 获取置顶方法参数
+        $put = $this->paramObject->put;
+        return ['code' => 200, 'data' => $put, 'message' => '请求完成'];
+    }
 
-        return [
-            'code' => 200,
-            'data' => null,
-            'message' => '欢迎使用自定义框架',
-        ];
+    /**
+     * @title 测试用例
+     * @uri /admin
+     * @method delete
+     */
+    public function delete()
+    {
+        // 测试静态调度 + 获取方法
+        $paramObject = Ioc::make(GetParams::class);
+        $delete = $paramObject->getParam('delete');
+
+        return ['code' => 200, 'data' => $delete, 'message' => '请求完成'];
     }
 }

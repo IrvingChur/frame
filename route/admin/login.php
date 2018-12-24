@@ -21,5 +21,6 @@ class login
     public function routeRegister()
     {
         $this->kernelRoute->bindingRoute('/admin', LoginController::class, 'index')->assignMethod('PUT');
+        $this->kernelRoute->bindingRoute('/admin', LoginController::class, 'delete')->assignMethod('DELETE');
     }
 }
