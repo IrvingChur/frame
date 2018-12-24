@@ -62,21 +62,10 @@ final class Framework {
         // 获取要调用的对象
         $controller = Dispatch::$url['class'];
         $function = Dispatch::$url['function'];
-        $paramObject = Ioc::getInstance($controller);
-
-        // 依赖注入
-        if (!empty($paramObject)) {
-            if (isset($paramObject['__construct'])) {
-                $controller = new $controller(...$paramObject['__construct']);
-            } else {
-                $controller = new $controller();
-            }
-            if (isset($paramObject[$function])) {
-                $result = call_user_func_array([$controller, $function], $paramObject[$function]);
-            }
-        } else {
-            $result = call_user_func([(new $controller()), $function]);
-        }
+        // 获取依赖注入实例
+        $object = Ioc::getInstance($controller);
+        // 执行
+        $result = call_user_func([$object, $function]);
 
         // 按照格式输出
         ResponseFormat::output($result);

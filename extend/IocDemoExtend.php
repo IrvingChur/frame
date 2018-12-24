@@ -11,5 +11,10 @@ namespace Extend;
 
 class IocDemoExtend
 {
+    public function __construct(IocDemoExtend2 $ioc2)
+    {
+        $this->idd = $ioc2;
+    }
+
     public $id = 1;
 }
