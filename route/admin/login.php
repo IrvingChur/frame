@@ -20,6 +20,6 @@ class login
 
     public function routeRegister()
     {
-        $this->kernelRoute->bindingRoute('/admin', LoginController::class, 'index')->assignMethod('GET');
+        $this->kernelRoute->bindingRoute('/admin', LoginController::class, 'index')->assignMethod('PUT');
     }
 }

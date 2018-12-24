@@ -17,7 +17,7 @@ class RouteBinding
 
     protected $postRoutes = [];
     protected $getRoutes = [];
-    protected $putRotes = [];
+    protected $putRoutes = [];
     protected $deleteRoutes = [];
     protected $saveRoute = [];
 
@@ -76,6 +76,7 @@ class RouteBinding
         }
 
         $methodVarName = $method.'Routes';
+
         if (!in_array($method, $this->$methodVarName)) {
             $this->$methodVarName[key($this->saveRoute)] = reset($this->saveRoute);
         }
@@ -93,7 +94,7 @@ class RouteBinding
         $allUrl = [
             'get' => $this->getRoutes,
             'post' => $this->postRoutes,
-            'put' => $this->putRotes,
+            'put' => $this->putRoutes,
             'delete' => $this->deleteRoutes,
         ];
 

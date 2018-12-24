@@ -8,8 +8,8 @@ namespace Framework\Kernel;
 class Dispatch
 {
     private static $pathInfo = '';
-    private static $requestMethod = '';
 
+    public static $requestMethod = '';
     public static $url = [];
 
     /**
@@ -33,6 +33,7 @@ class Dispatch
     private static function searchRoute()
     {
         $routes = RouteBinding::init()->getRoutes(strtolower(self::$requestMethod));
+
         $route = @$routes[self::$pathInfo];
         if (empty($route)) {
             throw new \Exception("路由不存在");
