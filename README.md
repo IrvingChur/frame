@@ -27,6 +27,10 @@ v0.0.5 版本更新说明
 1、重构IOC模块，现在支持多重依赖，并支持Ioc::make()  
 2、Ioc::make()依赖注入，并可声明是否强制建立新对象  
 
+v0.0.6 版本更新说明  
+1、新增获取参数方法，位于Framework\Instrument\GetParams
+2、更加直观的在Controller展示使用依赖注入的方法
+
 注意事项：  
 1、该框架是一个API框架，没有视图功能  
 2、在控制器中使用return即可返回信息，但需要限定格式，格式为return ['code' => , 'data' => , 'message' =>]  
