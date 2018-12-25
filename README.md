@@ -31,6 +31,9 @@ v0.0.6 版本更新说明
 1、新增获取参数方法，位于Framework\Instrument\GetParams
 2、更加直观的在Controller展示使用依赖注入的方法
 
+v0.0.7 版本更新说明  
+1、异常引用了whoops  
+
 注意事项：  
 1、该框架是一个API框架，没有视图功能  
 2、在控制器中使用return即可返回信息，但需要限定格式，格式为return ['code' => , 'data' => , 'message' =>]  
