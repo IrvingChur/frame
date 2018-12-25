@@ -5,9 +5,6 @@
  */
 namespace Framework\Kernel;
 
-
-use Framework\exception\ExceptionHandle;
-
 class Exception
 {
     /**
@@ -16,23 +13,16 @@ class Exception
      */
     public static function init()
     {
-        // 注册报错处理方法
-        set_exception_handler([(new ExceptionHandle()), 'handle']);
-        // 错误异常处理
-        self::setReporting();
-    }
-
-    /**
-     * @title 错误报告
-     * @return void
-     */
-    public static function setReporting()
-    {
-        if (DEBUG_MODE === true) {
-            error_reporting(E_ALL);
+        if (DEBUG_MODE) {
+            // 开启php报错
             ini_set('display_errors', 'On');
+
+            // 注册whoops
+            $whoops = new \Whoops\Run;
+            $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+            $whoops->register();
         } else {
-            error_reporting(0);
+            // 关闭php报错
             ini_set('display_errors', 'Off');
         }
     }

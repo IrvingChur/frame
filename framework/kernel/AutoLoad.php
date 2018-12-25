@@ -43,8 +43,6 @@ class AutoLoad
         // 加载文件
         if (file_exists(ROOT_PATH.'/'.$newClass.'.php')) {
             include ROOT_PATH.'/'.$newClass.'.php';
-        } elseif (file_exists(ROOT_PATH.'/'.$newClass.'Controller.php')) {
-            include ROOT_PATH.'/'.$newClass.'Controller.php';
         }
     }
 }
