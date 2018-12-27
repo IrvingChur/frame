@@ -18,9 +18,14 @@ class login
         $this->kernelRoute = RouteBinding::init();
     }
 
+    /**
+     * @title 注册路由
+     * @throws \Exception
+     * @return void
+     */
     public function routeRegister()
     {
-        $this->kernelRoute->bindingRoute('/admin', LoginController::class, 'index')->assignMethod('PUT');
+        $this->kernelRoute->bindingRoute('/admin', LoginController::class, 'index')->assignMethod('PUT')->bindingMiddle('middleGroup');
         $this->kernelRoute->bindingRoute('/admin', LoginController::class, 'delete')->assignMethod('DELETE');
     }
 }

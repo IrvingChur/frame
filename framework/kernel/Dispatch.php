@@ -39,6 +39,12 @@ class Dispatch
             throw new \Exception("路由不存在");
         }
 
+        // 检测中间件
+        if (isset($route['middleGroup'])) {
+            // 执行中间件
+            RouteMiddle::init()->loadRouteMiddle($route['middleGroup']);
+        }
+
         return $route;
     }
 }

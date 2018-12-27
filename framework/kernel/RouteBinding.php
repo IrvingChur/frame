@@ -15,11 +15,18 @@ class RouteBinding
 
     private static $selfObject;
 
+    // 保存post
     protected $postRoutes = [];
+    // 保存get
     protected $getRoutes = [];
+    // 保存put
     protected $putRoutes = [];
+    // 保存delete
     protected $deleteRoutes = [];
+    // 临时保存路由
     protected $saveRoute = [];
+    // 临时保存地址
+    protected $saveAddress;
 
     private function __construct()
     {
@@ -79,8 +86,24 @@ class RouteBinding
 
         if (!in_array($method, $this->$methodVarName)) {
             $this->$methodVarName[key($this->saveRoute)] = reset($this->saveRoute);
+            $this->saveAddress = &$this->$methodVarName[key($this->saveRoute)];
         }
 
+        return $this;
+    }
+
+    /**
+     * @title 绑定中间件
+     * @param string $middleGroupName 中间件组名
+     * @return object
+     */
+    public function bindingMiddle(string $middleGroupName)
+    {
+        if (empty($middleGroupName)) {
+            throw new \Exception("中间件组名不能为空");
+        }
+
+        $this->saveAddress['middleGroup'] = $middleGroupName;
         return $this;
     }
 

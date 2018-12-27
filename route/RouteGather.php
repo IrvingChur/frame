@@ -6,9 +6,12 @@
 namespace Route;
 
 
+use Application\Admin\RouteMiddle\Measurement;
+
 class RouteGather
 {
     private static $gather = [];
+    private static $middle = [];
 
     /**
      * @title 返回路由集合信息
@@ -22,6 +25,7 @@ class RouteGather
         ];
 
         self::registerRoutes();
+        self::registerMiddle();
     }
 
     /**
@@ -33,5 +37,33 @@ class RouteGather
         foreach (self::$gather as $value) {
             (new $value)->routeRegister();
         }
+    }
+
+    /**
+     * @title 加载路由中间件集合
+     * @return void
+     */
+    private static function registerMiddle()
+    {
+        // 在数组中加入中间件组
+        self::$middle = [
+            'middleGroup' => [
+                // 这边输入middle的class
+                Measurement::class,
+            ]
+        ];
+    }
+
+    /**
+     * @title 返回中间件组
+     * @return array
+     */
+    public static function getMiddleGroup(string $middleGroupName = '')
+    {
+        if (!empty($middleGroupName)) {
+            return self::$middle[$middleGroupName];
+        }
+
+        return self::$middle;
     }
 }

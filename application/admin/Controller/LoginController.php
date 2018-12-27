@@ -25,6 +25,9 @@ class LoginController
     public function index()
     {
         // 测试依赖注入 + 获取置顶方法参数
+
+        throw new \Exception('1111');
+
         $put = $this->paramObject->put;
         return ['code' => 200, 'data' => $put, 'message' => '请求完成'];
     }

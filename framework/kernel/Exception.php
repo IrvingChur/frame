@@ -5,6 +5,8 @@
  */
 namespace Framework\Kernel;
 
+use Framework\Exception\ClientException;
+
 class Exception
 {
     /**
@@ -24,6 +26,7 @@ class Exception
         } else {
             // 关闭php报错
             ini_set('display_errors', 'Off');
+            set_exception_handler([(new ClientException()), 'handle']);
         }
     }
 }

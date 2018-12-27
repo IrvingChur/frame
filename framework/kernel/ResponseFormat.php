@@ -41,6 +41,9 @@ class ResponseFormat
     {
         $message = self::responseFormat($data);
         echo $message;
+
+        // 冲刷缓存区,即时返回
+        fastcgi_finish_request();
     }
 
     private static function getFormat()
