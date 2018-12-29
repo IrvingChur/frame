@@ -49,7 +49,7 @@ class Redis extends CacheAbstract
      */
     protected function RedisConnect()
     {
-        $redisConfig = GetConfig::GetIncludeConfig(ROOT_PATH.'/config/common/CacheCOnfig.php');
+        $redisConfig = GetConfig::GetIncludeConfig(ROOT_PATH.'/config/common/CacheConfig.php');
         $this->originalObject = new \Redis();
         $this->originalObject->connect($redisConfig['host'], $redisConfig['port']);
 
@@ -58,16 +58,34 @@ class Redis extends CacheAbstract
         }
     }
 
+    /**
+     * @title 设置缓存
+     * @param string $key
+     * @param $value
+     * @return mixed
+     */
     public function set(string $key, $value)
     {
         return $this->originalObject->set($key, $value);
     }
 
+    /**
+     * @title 获取缓存
+     * @param string $key
+     * @return mixed
+     */
     public function get(string $key)
     {
-        return $this->originalObject->get($key);
+        $result = $this->originalObject->get($key);
+        return $this->result($result);
     }
 
+    /**
+     * @title 设置数组缓存
+     * @param string $key
+     * @param $value
+     * @return mixed
+     */
     public function setArray(string $key, $value)
     {
         $value = $this->conversion($value);

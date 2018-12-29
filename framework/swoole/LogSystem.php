@@ -20,6 +20,8 @@ class LogSystem
                 'max_request' => 1000, //最大请求量
                 'dispatch_mode' => 2,
                 'task_worker_num' => 1, //task进程的数量
+                'heartbeat_check_interval' => 5, //检测心跳
+                'heartbeat_idle_time' => 10, // 10秒没心跳就断开连接
             )
         );
 
