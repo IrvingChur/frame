@@ -17,9 +17,9 @@ class ResponseFormat
     public static function responseFormat($data)
     {
         $data = [
-            'code' => intval($data['code']),
-            'data' => $data['data'],
-            'message' => (string) $data['message'],
+            'code' => intval($data['code']) ?? 200,
+            'data' => $data['data'] ?? null,
+            'message' => (string) $data['message'] ?? '',
         ];
 
         $format = self::getFormat();
