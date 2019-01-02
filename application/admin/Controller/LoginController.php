@@ -20,14 +20,23 @@ class LoginController
     /**
      * @title 测试用例
      * @uri /admin
+     * @method get
+     */
+    public function logs()
+    {
+        // 日志测试
+        $result = LogSystem::writeLog('uri:admin and method get');
+        return ['code' => 200, 'data' => $result, 'message' => '请求完成'];
+    }
+
+    /**
+     * @title 测试用例
+     * @uri /admin
      * @method put
      */
     public function index()
     {
         // 测试依赖注入 + 获取置顶方法参数
-
-        throw new \Exception('1111');
-
         $put = $this->paramObject->put;
         return ['code' => 200, 'data' => $put, 'message' => '请求完成'];
     }

@@ -27,5 +27,6 @@ class login
     {
         $this->kernelRoute->bindingRoute('/admin', LoginController::class, 'index')->assignMethod('PUT')->bindingMiddle('middleGroup');
         $this->kernelRoute->bindingRoute('/admin', LoginController::class, 'delete')->assignMethod('DELETE');
+        $this->kernelRoute->bindingRoute('/admin', LoginController::class, 'logs')->assignMethod('GET');
     }
 }

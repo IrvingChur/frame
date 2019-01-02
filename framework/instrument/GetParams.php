@@ -35,7 +35,7 @@ class GetParams
             throw new \Exception("暂不支持该方法参数");
         }
 
-        $data = $this->data[$method];
+        $data = $this->data[$method] ?? $this->data;
         if ($index != '' && isset($this->data[$index])) {
             $data = $data[$index];
         }

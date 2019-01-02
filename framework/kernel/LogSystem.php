@@ -71,8 +71,9 @@ class LogSystem
         $trace = [];
         $trace['path'] = self::$path;
         $trace['log'] = $string;
-        $result = self::$client->send(serialize($trace));
+        $sendResult = self::$client->send(serialize($trace));
+//        $result = self::$client->recv(); // 阻塞等待回复(关闭)
         self::$client->close();
-        return $result ? true : false ;
+        return $result ?? $sendResult ;
     }
 }
